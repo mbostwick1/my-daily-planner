@@ -1,40 +1,39 @@
 $(document).ready(function () {
-    // console.log("oh hey");
-    //Date counter//
-    $("#currentDay").text(moment().format("dddd") + ", " + moment().format("MMMM Do"));
+  // console.log("oh hey");
+  //Date counter//
+  $("#currentDay").text(
+    moment().format("dddd") + ", " + moment().format("MMMM Do")
+  );
+
+  // variables
+  var block = $(".time-block");
+  var saveBtn = $(".saveBtn");
+
+  //Function Calls
+  //Function to determine the hour and past, present, future css styling //
+  function hourDisplay() {
+    //get current hour
+    var currentTime = moment().hour();
+    $(block).each(function () {
+        var blockTime = parseInt($(this).attr("id").split("hour")[1]);
+        // console.log(currentTime, blockTime);
+        if (currentTime === blockTime) {
+          $(this).addClass("present");
+        } else if (currentTime > blockTime) {
+          $(this).addClass("past");
+        } else {
+          $(this).addClass("future");
+        }
+      });
    
-    // variables 
-  
+  }
+  hourDisplay();
 
-    var saveBtn = $(".saveBtn");
-    //Function Definitions
+  function makePlans() {}
 
-
-    //Function Calls
-    //Function to determine the hour and past, present, future css styling //
-    function hourDisplay() {
-        //get current hour
-        var currentHour = moment().hour();
-        
-       
-
-    }
-
-    function makePlans() {
-
-
-
-    }
-
-    //Event Listeners
-    saveBtn.on("click", function () {
-        //  console.log("button clicked");
-        // console.log(this);
-    })
-
-
+  //Event Listeners
+  saveBtn.on("click", function () {
+    //  console.log("button clicked");
+    // console.log(this);
+  });
 });
-
-
-
-
