@@ -9,18 +9,17 @@ $(document).ready(function () {
   var block = $(".time-block");
   var saveBtn = $(".saveBtn");
 
-// Function Calls //
+  // Function Calls //
   // Make Plans //
   function makePlans() {
     block.each(function () {
-        var id = $(this).attr("id");
-        var plans = localStorage.getItem(id);
+      var id = $(this).attr("id");
+      var plans = localStorage.getItem(id);
 
-        if (plans !== null) {
-            $(this).children(".description").val(plans);
-        }
+      if (plans !== null) {
+        $(this).children(".description").val(plans);
+      }
     });
-
   }
   makePlans();
 
@@ -42,12 +41,16 @@ $(document).ready(function () {
   }
   hourDisplay();
 
- 
-
   //Event Listeners
   saveBtn.on("click", function () {
     //  console.log("button clicked");
     // console.log(this);
-
+    // define variables for desc. and time //
+    var time = $(this).parent().attr("id");
+    var plans = $(this).siblings(".description").val();
+    // console.log(time, plans);
+    //save in local storage
+    localStorage.setItem(time, plans);
+    
   });
 });
